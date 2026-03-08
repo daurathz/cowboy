@@ -1,17 +1,28 @@
 {
   "lastChecks": {
-    "calendar": 1741428000,
-    "tasks": 1741428000,
-    "messages": 1741428000,
-    "documents": 1741449240,
-    "reports": 1741046400
+    "calendar": null,
+    "tasks": null,
+    "messages": null,
+    "documents": null,
+    "heartbeat": 1741438500000
   },
   "nextChecks": {
-    "calendar": 1741514400,
-    "tasks": 1741514400,
-    "messages": 1741514400,
-    "documents": 1741514400
+    "calendar": 1741442100000,
+    "tasks": 1741442100000,
+    "messages": 1741442100000,
+    "documents": 1741524900000,
+    "heartbeat": 1741440300000
   },
-  "lastHeartbeat": "2026-03-08T19:54:00+08:00",
-  "notes": "Sunday 19:54 check - FINAL check before end of work hours (20:00). New capabilities added: Self-awareness info in SOUL.md, Multi-Agent collaboration skill created. All changes committed. System ready for overnight. Next check: Monday 09:00."
+  "checkIntervals": {
+    "calendar": 3600000,
+    "tasks": 3600000,
+    "messages": 3600000,
+    "documents": 86400000,
+    "heartbeat": 1800000
+  },
+  "stats": {
+    "totalChecks": 0,
+    "alertsSent": 0,
+    "lastAlert": null
+  }
 }
