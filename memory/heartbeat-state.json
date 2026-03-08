@@ -1,17 +1,17 @@
 {
   "lastChecks": {
-    "calendar": null,
-    "tasks": null,
-    "messages": null,
-    "documents": null,
-    "heartbeat": 1741438500000
-  },
-  "nextChecks": {
     "calendar": 1741442100000,
     "tasks": 1741442100000,
     "messages": 1741442100000,
-    "documents": 1741524900000,
-    "heartbeat": 1741440300000
+    "documents": 1741442100000,
+    "heartbeat": 1741442100000
+  },
+  "nextChecks": {
+    "calendar": 1741503600000,
+    "tasks": 1741503600000,
+    "messages": 1741503600000,
+    "documents": 1741528500000,
+    "heartbeat": 1741503600000
   },
   "checkIntervals": {
     "calendar": 3600000,
@@ -21,8 +21,15 @@
     "heartbeat": 1800000
   },
   "stats": {
-    "totalChecks": 0,
+    "totalChecks": 6,
     "alertsSent": 0,
     "lastAlert": null
-  }
+  },
+  "workHours": {
+    "start": "09:00",
+    "end": "20:00",
+    "timezone": "Asia/Shanghai"
+  },
+  "lastHeartbeat": "2026-03-08T20:54:00+08:00",
+  "notes": "Sunday 20:54 - WORK HOURS ENDED. All changes committed and pushed (3 commits). HEARTBEAT.md enhanced with detailed check frequencies, priorities, and NO_REPLY mechanism. System entering overnight mode. Next check: Monday 09:00."
 }
