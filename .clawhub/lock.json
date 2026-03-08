@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "searxng": {
+      "version": "1.0.3",
+      "installedAt": 1772248540804
+    },
+    "self-improving": {
+      "version": "1.2.10",
+      "installedAt": 1772952859132
+    }
+  }
+}
