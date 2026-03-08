@@ -4,7 +4,7 @@
     "tasks": 1741442100000,
     "messages": 1741442100000,
     "documents": 1741442100000,
-    "heartbeat": 1741442100000
+    "heartbeat": 1741466640000
   },
   "nextChecks": {
     "calendar": 1741503600000,
@@ -21,7 +21,7 @@
     "heartbeat": 1800000
   },
   "stats": {
-    "totalChecks": 6,
+    "totalChecks": 10,
     "alertsSent": 0,
     "lastAlert": null
   },
@@ -30,6 +30,6 @@
     "end": "20:00",
     "timezone": "Asia/Shanghai"
   },
-  "lastHeartbeat": "2026-03-08T20:54:00+08:00",
-  "notes": "Sunday 20:54 - WORK HOURS ENDED. All changes committed and pushed (3 commits). HEARTBEAT.md enhanced with detailed check frequencies, priorities, and NO_REPLY mechanism. System entering overnight mode. Next check: Monday 09:00."
+  "lastHeartbeat": "2026-03-08T23:24:00+08:00",
+  "notes": "Sunday 23:24 - OVERNIGHT MODE. Work hours ended 3.5h ago. System quiet, all changes committed. No urgent items. Next check: Monday 09:00 (start of work hours)."
 }
