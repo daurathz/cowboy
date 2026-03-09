@@ -8,6 +8,10 @@
     "self-improving": {
       "version": "1.2.10",
       "installedAt": 1772952859132
+    },
+    "proactive-agent-skill": {
+      "version": "1.0.0",
+      "installedAt": 1773067502365
     }
   }
 }
