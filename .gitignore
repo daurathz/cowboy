@@ -1,0 +1,53 @@
+# 依赖目录
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# 构建产物
+dist/
+build/
+.next/
+out/
+*.log
+
+# 环境配置 (敏感)
+.env
+.env.local
+.env.*.local
+*.env
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 测试覆盖率
+coverage/
+
+# OpenClaw 运行时
+.cache/
+temp/
+tmp/
+
+# 密钥和证书 (敏感)
+*.key
+*.pem
+*.crt
+secrets/
+private/
+
+# 大型二进制文件 (可选)
+# *.pdf
+# *.zip
+# *.tar.gz
