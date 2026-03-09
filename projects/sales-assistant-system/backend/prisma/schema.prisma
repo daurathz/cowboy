@@ -1,0 +1,159 @@
+// Prisma Schema for Sales Assistant System
+// 销售助理系统数据库模型
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// 用户和认证模块
+// ============================================
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  username  String   @unique
+  password  String   // bcrypt hashed
+  role      Role     @default(SALESMAN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // 关系
+  customers    Customer[] @relation("AssignedCustomers")
+  deals        Deal[]
+  teamMembers  TeamMember[] @relation("TeamMembers")
+  managedTeam  Team?    @relation("TeamManager", fields: [managedTeamId], references: [id])
+  managedTeamId String?
+  
+  @@map("users")
+}
+
+enum Role {
+  SALESMAN      // 销售人员
+  SUPERVISOR    // 销售主管
+  ADMIN         // 系统管理员
+}
+
+// ============================================
+// 团队管理模块
+// ============================================
+
+model Team {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  managerId   String   @unique
+  manager     User     @relation("TeamManager", fields: [managerId], references: [id])
+  members     TeamMember[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("teams")
+}
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  userId    String
+  teamId    String
+  user      User     @relation("TeamMembers", fields: [userId], references: [id], onDelete: Cascade)
+  team      Team     @relation(fields: [teamId], references: [teamId], onDelete: Cascade)
+  joinedAt  DateTime @default(now())
+  
+  @@unique([userId, teamId])
+  @@map("team_members")
+}
+
+// ============================================
+// 客户管理模块
+// ============================================
+
+model Customer {
+  id          String   @id @default(uuid())
+  name        String
+  phone       String?
+  email       String?
+  company     String?
+  position    String?
+  source      String?  // 客户来源
+  status      CustomerStatus @default(LEAD)
+  assignedTo  String
+  assignee    User     @relation("AssignedCustomers", fields: [assignedTo], references: [id])
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // 关系
+  followUps FollowUp[]
+  deals     Deal[]
+  
+  @@map("customers")
+}
+
+enum CustomerStatus {
+  LEAD       // 潜在客户
+  CONTACTED  // 已联系
+  INTERESTED // 有意向
+  NEGOTIATING // 谈判中
+  CLOSED     // 已成交
+  LOST       // 已流失
+}
+
+model FollowUp {
+  id          String   @id @default(uuid())
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  content     String   @db.Text
+  type        FollowUpType
+  nextFollowUp DateTime?
+  createdAt   DateTime @default(now())
+  
+  @@map("follow_ups")
+}
+
+enum FollowUpType {
+  CALL
+  MEETING
+  EMAIL
+  WECHAT
+  OTHER
+}
+
+// ============================================
+// 成交管理模块
+// ============================================
+
+model Deal {
+  id          String   @id @default(uuid())
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id])
+  salesId     String
+  sales       User     @relation(fields: [salesId], references: [id])
+  
+  product     String
+  quantity    Int      @default(1)
+  amount      Decimal  @db.Decimal(10, 2)
+  status      DealStatus @default(PENDING)
+  
+  contractNo  String?  // 合同编号
+  signedAt    DateTime?
+  paidAmount  Decimal  @db.Decimal(10, 2) @default(0)
+  
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("deals")
+}
+
+enum DealStatus {
+  PENDING    // 待确认
+  SIGNED     // 已签约
+  PAID       // 已付款
+  COMPLETED  // 已完成
+  CANCELLED  // 已取消
+}
